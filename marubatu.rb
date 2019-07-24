@@ -42,13 +42,36 @@ screen(array)
 #  puts 'A) ○ を置く場所の数を入力してください'
 
 i = 1
+count = 0
 while i <= 9
   if i.odd?
     isiwooku(array,1)
   else
     isiwooku(array,-1)
   end
-
   screen(array)
+
+
+  ## 合計 row col
+  #array.each do |row, col|
+  #  ans_row = row.inject(:+)
+  #  ans_col = col.inject(:+)
+
+  #  if ans_row
+  #  when 3
+  #    puts ("WIN")
+  #    count = 1
+  #    break
+  #  when -3
+  #    puts ("WIN")
+  #    count = 1
+  #    break
+  #  end
+  #end
+
+  #if count == 1 
+  #  break
+  #end
+
   i += 1
 end
