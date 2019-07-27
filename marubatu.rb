@@ -1,4 +1,13 @@
 # ox GAME
+# ToDO
+# 1) 一度おいた場所には置けないようにする
+# 2) 00~22の間のみに置く
+# 3) 計算結果が出ない
+#   -> DONE 呼び出しがすべてcolだった
+#   -> calc(ans) if i == 9 を追加 
+# 4) なぜか二回結果が出てしまっている
+#   -> DONE メソッドの外でscreenを呼んでいた
+# 5) draw 処理がうまく言っていない
 
 # output
 def screen(array)
@@ -30,7 +39,7 @@ def calc(array)
   ans_col = 0
   ans_row = 0
   ans_diag = 0
-  ans_diag_inverse = 0
+  ans_diag_inverse = -1
   3.times do |n|
     ans_col = 0
     ans_row = 0
@@ -41,9 +50,9 @@ def calc(array)
     ans_diag += array[n][n]
     ans_diag_inverse += array[n][2 - n]
     p 'col exit' if ans_col.abs == 3
-    p 'row exit' if ans_col.abs == 3
-    p 'diag exit' if ans_col.abs == 3
-    p 'diag_inverse exit' if ans_col.abs == 3
+    p 'row exit' if ans_row.abs == 3
+    p 'diag exit' if ans_diag.abs == 3
+    p 'diag_inverse exit' if ans_diag_inverse.abs == 3
   end
 end
 
@@ -57,8 +66,6 @@ array = [
   [0, 0, 0]
 ]
 
-screen(array)
-
 # input
 
 i = 1
@@ -70,7 +77,7 @@ while i <= 9
     puts 'B) ○ を置く場所の数( ex) 01 , 11...)を入力してください'
     isiwooku(array, -1)
   end
-  screen(array)
-
+  ans = screen(array)
+  calc(ans) if i == 9
   i += 1
 end
