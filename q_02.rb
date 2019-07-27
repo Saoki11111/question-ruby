@@ -6,10 +6,21 @@
 # How many cans in total do you drink when have 20 cans?
 #
 
-backets = 40000
+backets = 20
 drunk = 0
 
 while backets > 0 do
+
+#  if backets >= 3
+#    backets = backets - 3
+#    drunk = drunk + 3
+#
+#    backets = backets + 1
+#  else
+#    drunk = drunk + backets
+#    backets = backets - backets
+#  end
+
 
   if backets >= 3
     backets = backets - 3
@@ -20,6 +31,8 @@ while backets > 0 do
     drunk = drunk + backets
     backets = backets - backets
   end
+
 end
+
 puts drunk
 

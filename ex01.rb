@@ -1,8 +1,7 @@
-a = 15 # コメント
-b = 20
+require 'scanf'
 
-printf "a = 15\nb = 20\n"
-printf "a + b = %d\n", a + b
-printf "ENTERおして"
-gets
-printf 'End'
+puts 'a,bを入力してください'
+a, b = scanf '%d %d'
+
+printf "a = %d b = %d\n",a, b
+printf "a + b = %d\n",a + b
