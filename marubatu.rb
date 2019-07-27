@@ -26,6 +26,31 @@ def isiwooku(array, player)
   array[row][col] = player
 end
 
+def calc(array)
+  ans_col = 0
+  ans_row = 0
+  ans_diag = 0
+  ans_diag_inverse = 0
+  3.times do |n|
+    ans_col = 0
+    ans_row = 0
+    3.times do |num|
+      ans_col += array[num][n]
+      ans_row += array[n][num]
+    end
+    ans_diag += array[n][n]
+    ans_diag_inverse += array[n][2 - n]
+    p 'col exit' if ans_col.abs == 3
+    p 'row exit' if ans_col.abs == 3
+    p 'diag exit' if ans_col.abs == 3
+    p 'diag_inverse exit' if ans_col.abs == 3
+  end
+end
+
+def draw
+  p '引き分けです'
+end
+
 array = [
   [0, 0, 0],
   [0, 0, 0],
