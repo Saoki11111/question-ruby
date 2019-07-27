@@ -1,55 +1,48 @@
-# ○ ☓ ゲームを実装する
+# ox GAME
 
-# 出力 
+# output
 def screen(array)
   array.each do |row|
     count = 0
-    row.each do |num| 
+    row.each do |num|
       case num
       when 1
-        print("o")
+        print('o')
       when -1
-        print("x")
+        print('x')
       when 0
-        print(" ")
+        print(' ')
       end
       count += 1
-      if count <= 2
-        print("|")
-      end
+      print('|') if count <= 2
     end
-
     print("\n")
   end
 end
 
-def isiwooku(array,player)
+def isiwooku(array, player)
   input = gets.chomp
-  row,col = input.split("").map do |v|
-    v.to_i
-  end
-
+  row, col = input.split('').map(&:to_i)
   array[row][col] = player
 end
 
 array = [
-  [0,0,0],
-  [0,0,0],
-  [0,0,0]
+  [0, 0, 0],
+  [0, 0, 0],
+  [0, 0, 0]
 ]
 
 screen(array)
 
-# 入力
-#  puts 'A) ○ を置く場所の数を入力してください'
+# input
+puts 'A) ○ を置く場所の数( ex)01 , 11...)を入力してください'
 
 i = 1
-count = 0
 while i <= 9
   if i.odd?
-    isiwooku(array,1)
+    isiwooku(array, 1)
   else
-    isiwooku(array,-1)
+    isiwooku(array, -1)
   end
   screen(array)
 
