@@ -35,13 +35,14 @@ array = [
 screen(array)
 
 # input
-puts 'A) ○ を置く場所の数( ex)01 , 11...)を入力してください'
 
 i = 1
 while i <= 9
   if i.odd?
+    puts 'A) ○ を置く場所の数( ex) 01 , 11...)を入力してください'
     isiwooku(array, 1)
   else
+    puts 'B) ○ を置く場所の数( ex) 01 , 11...)を入力してください'
     isiwooku(array, -1)
   end
   screen(array)
