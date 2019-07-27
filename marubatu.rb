@@ -18,6 +18,7 @@ def screen(array)
         print("|")
       end
     end
+
     print("\n")
   end
 end
@@ -27,6 +28,7 @@ def isiwooku(array,player)
   row,col = input.split("").map do |v|
     v.to_i
   end
+
   array[row][col] = player
 end
 
@@ -50,28 +52,6 @@ while i <= 9
     isiwooku(array,-1)
   end
   screen(array)
-
-
-  ## 合計 row col
-  #array.each do |row, col|
-  #  ans_row = row.inject(:+)
-  #  ans_col = col.inject(:+)
-
-  #  if ans_row
-  #  when 3
-  #    puts ("WIN")
-  #    count = 1
-  #    break
-  #  when -3
-  #    puts ("WIN")
-  #    count = 1
-  #    break
-  #  end
-  #end
-
-  #if count == 1 
-  #  break
-  #end
 
   i += 1
 end
