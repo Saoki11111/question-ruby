@@ -1,12 +1,7 @@
 # ox GAME
-# ToDO
-# 1) 一度おいた場所には置けないようにする
-# 2) 00~22の間のみに置く
-# 3) 計算結果が出ない
-#   -> DONE 呼び出しがすべてcolだった
-#   -> calc(ans) if i == 9 を追加 
-# 4) なぜか二回結果が出てしまっている
-#   -> DONE メソッドの外でscreenを呼んでいた
+# TODO
+# 1) 一度置いた場所には置けないようにする
+# 2) 00~22の間以外に置けてしまう
 # 5) draw 処理がうまく言っていない
 
 # output
@@ -73,11 +68,16 @@ while i <= 9
   if i.odd?
     puts 'A) ○ を置く場所の数( ex) 01 , 11...)を入力してください'
     isiwooku(array, 1)
+    calc(array)
+    # 一回実行してbreakしてしまう
+    # 複数回実行してbreakするにはどうすればよいか
+    break
   else
     puts 'B) ○ を置く場所の数( ex) 01 , 11...)を入力してください'
     isiwooku(array, -1)
+    calc(array)
+    break
   end
-  ans = screen(array)
-  calc(ans) if i == 9
+  screen(array)
   i += 1
 end
