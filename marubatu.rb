@@ -6,16 +6,17 @@
 def screen(array)
   array.each do |row|
     count = 0
-    row.each do |num| case num
-    when 1
-      print('o')
-    when -1
-      print('x')
-    when 0
-      print(' ')
-    end
-    count += 1
-    print('|') if count <= 2
+    row.each do |num|
+      case num
+      when 1
+        print('o')
+      when -1
+        print('x')
+      when 0
+        print(' ')
+      end
+      count += 1
+      print('|') if count <= 2
     end
     print("\n")
   end
@@ -41,7 +42,6 @@ def calc(array)
     end
     ans_diag += array[n][n]
     ans_diag_inverse += array[n][2 - n]
-    ans = 0
     if ans_col.abs == 3
       puts 'col exit'
       exit
@@ -49,10 +49,10 @@ def calc(array)
       puts 'row exit'
       exit
     elsif ans_diag.abs == 3
-      puts 'diag exit' 
-      exit 
+      puts 'diag exit'
+      exit
     elsif ans_diag_inverse.abs == 3
-      puts 'diag_inverse exit' 
+      puts 'diag_inverse exit'
       exit
     end
   end
@@ -77,7 +77,5 @@ while i <= 9
   screen(array)
   calc(array)
   i += 1
-  if i == 10
-    p 'draw'
-  end
+  p 'draw' if i == 10
 end
