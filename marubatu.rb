@@ -1,24 +1,21 @@
 # ox GAME
 # TODO
 # 1) 一度置いた場所には置けないようにする
-# 2) 00~22の間以外に置けてしまう
-# 5) draw 処理がうまく言っていない
+# 2) 00~22の間以外に置けてしまう # 3) draw 処理が必要 
 
-# output
 def screen(array)
   array.each do |row|
     count = 0
-    row.each do |num|
-      case num
-      when 1
-        print('o')
-      when -1
-        print('x')
-      when 0
-        print(' ')
-      end
-      count += 1
-      print('|') if count <= 2
+    row.each do |num| case num
+    when 1
+      print('o')
+    when -1
+      print('x')
+    when 0
+      print(' ')
+    end
+    count += 1
+    print('|') if count <= 2
     end
     print("\n")
   end
@@ -44,15 +41,21 @@ def calc(array)
     end
     ans_diag += array[n][n]
     ans_diag_inverse += array[n][2 - n]
-    p 'col exit' if ans_col.abs == 3
-    p 'row exit' if ans_row.abs == 3
-    p 'diag exit' if ans_diag.abs == 3
-    p 'diag_inverse exit' if ans_diag_inverse.abs == 3
+    ans = 0
+    if ans_col.abs == 3
+      puts 'col exit'
+      exit
+    elsif ans_row.abs == 3
+      puts 'row exit'
+      exit
+    elsif ans_diag.abs == 3
+      puts 'diag exit' 
+      exit 
+    elsif ans_diag_inverse.abs == 3
+      puts 'diag_inverse exit' 
+      exit
+    end
   end
-end
-
-def draw
-  p '引き分けです'
 end
 
 array = [
@@ -62,22 +65,19 @@ array = [
 ]
 
 # input
-
 i = 1
 while i <= 9
   if i.odd?
     puts 'A) ○ を置く場所の数( ex) 01 , 11...)を入力してください'
     isiwooku(array, 1)
-    calc(array)
-    # 一回実行してbreakしてしまう
-    # 複数回実行してbreakするにはどうすればよいか
-    break
   else
     puts 'B) ○ を置く場所の数( ex) 01 , 11...)を入力してください'
     isiwooku(array, -1)
-    calc(array)
-    break
   end
   screen(array)
+  calc(array)
   i += 1
+  if i == 10
+    p 'draw'
+  end
 end
