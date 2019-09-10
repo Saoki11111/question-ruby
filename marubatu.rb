@@ -1,7 +1,7 @@
-# ox GAME
+# frozen_string_literal: true
+
+#  ox GAME
 # TODO
-# 1) 一度置いた場所には置けないようにする
-# 2) 00~22の間以外に置けてしまう # 3) draw 処理が必要 
 
 def screen(array)
   array.each do |row|
@@ -22,60 +22,39 @@ def screen(array)
   end
 end
 
-def isiwooku(array, player)
+def set
   input = gets.chomp
+end
+
+def devide(input)
   row, col = input.split('').map(&:to_i)
+end
+
+def set_coordinate(array,  player)
   array[row][col] = player
 end
 
-def calc(array)
-  ans_col = 0
-  ans_row = 0
-  ans_diag = 0
-  ans_diag_inverse = -1
-  3.times do |n|
-    ans_col = 0
-    ans_row = 0
-    3.times do |num|
-      ans_col += array[num][n]
-      ans_row += array[n][num]
-    end
-    ans_diag += array[n][n]
-    ans_diag_inverse += array[n][2 - n]
-    if ans_col.abs == 3
-      puts 'col exit'
-      exit
-    elsif ans_row.abs == 3
-      puts 'row exit'
-      exit
-    elsif ans_diag.abs == 3
-      puts 'diag exit'
-      exit
-    elsif ans_diag_inverse.abs == 3
-      puts 'diag_inverse exit'
-      exit
-    end
-  end
-end
-
 array = [
-  [0, 0, 0],
-  [0, 0, 0],
-  [0, 0, 0]
+  [0, 0, 0], [0, 0, 0], [0, 0, 0]
 ]
 
-# input
-i = 1
-while i <= 9
-  if i.odd?
-    puts 'A) ○ を置く場所の数( ex) 01 , 11...)を入力してください'
-    isiwooku(array, 1)
-  else
-    puts 'B) ○ を置く場所の数( ex) 01 , 11...)を入力してください'
-    isiwooku(array, -1)
+def input_ox
+  i = 1
+  while i <= 9
+    if i.odd?
+      puts 'A) ○ を置く場所の数( ex) 01 , 11...)を入力してください'
+      set
+      set_coordinate(array, 1)
+    else
+      puts 'B) ○ を置く場所の数( ex) 01 , 11...)を入力してください'
+      set
+      set_coordinate(array, -1)
+    end
+    screen(array)
+    calc(array)
+    i += 1
+    p 'draw' if i == 10
   end
-  screen(array)
-  calc(array)
-  i += 1
-  p 'draw' if i == 10
 end
+
+input_ox
