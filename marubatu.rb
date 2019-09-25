@@ -3,6 +3,8 @@
 #  ox GAME
 # TODO
 
+require './calc_marubatu.rb'
+
 def screen(array)
   array.each do |row|
     count = 0
@@ -26,19 +28,12 @@ def set
   input = gets.chomp
 end
 
-def devide(input)
-  row, col = input.split('').map(&:to_i)
-end
-
-def set_coordinate(array,  player)
+def set_coordinate(array, player)
+  row, col = set.split('').map(&:to_i)
   array[row][col] = player
 end
 
-array = [
-  [0, 0, 0], [0, 0, 0], [0, 0, 0]
-]
-
-def input_ox
+def input_ox(array)
   i = 1
   while i <= 9
     if i.odd?
@@ -51,10 +46,14 @@ def input_ox
       set_coordinate(array, -1)
     end
     screen(array)
-    calc(array)
+    Calc.calc(array)
     i += 1
     p 'draw' if i == 10
   end
 end
 
-input_ox
+array = [
+  [0, 0, 0], [0, 0, 0], [0, 0, 0]
+]
+
+input_ox(array)
